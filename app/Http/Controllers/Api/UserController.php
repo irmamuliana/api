@@ -42,11 +42,6 @@ class UserController extends Controller
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'description' => 'required',
-            'phone' => 'required',
-            'linkedin' => 'required',
-            'instagram' => 'required',
-            'twitter' => 'required',
         ]);
         if($validation->fails())
         {
@@ -59,11 +54,6 @@ class UserController extends Controller
             $data->username = $request->input('username');
             $data->email = $request->input('email');
             $data->password = Hash::make($request->input('password'));
-            $data->description = $request->input('description');
-            $data->phone = $request->input('phone');
-            $data->linkedin = $request->input('linkedin');
-            $data->instagram = $request->input('instagram');
-            $data->twitter = $request->input('twitter');
             $data->token = 0;
 
             if($data->save()){
@@ -90,11 +80,6 @@ class UserController extends Controller
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'description' => 'required',
-            'phone' => 'required',
-            'linkedin' => 'required',
-            'instagram' => 'required',
-            'twitter' => 'required',
         ]);
         if($validation->fails())
         {
@@ -107,11 +92,6 @@ class UserController extends Controller
             $data->username = $request->input('username');
             $data->email = $request->input('email');
             $data->password = Hash::make($request->input('password'));
-            $data->description = $request->input('description');
-            $data->phone = $request->input('phone');
-            $data->linkedin = $request->input('linkedin');
-            $data->instagram = $request->input('instagram');
-            $data->twitter = $request->input('twitter');
             $data->token = 0;
 
             if($data->update()){
@@ -153,13 +133,8 @@ class UserController extends Controller
         $validation = \Validator::make($request->all(),[ 
             'name' => 'required',
             'username' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
-            'description' => 'required',
-            'phone' => 'required',
-            'linkedin' => 'required',
-            'instagram' => 'required',
-            'twitter' => 'required',
         ]);
         if($validation->fails())
         {
@@ -172,11 +147,6 @@ class UserController extends Controller
             $data->username = $request->input('username');
             $data->email = $request->input('email');
             $data->password = Hash::make($request->input('password'));
-            $data->description = $request->input('description');
-            $data->phone = $request->input('phone');
-            $data->linkedin = $request->input('linkedin');
-            $data->instagram = $request->input('instagram');
-            $data->twitter = $request->input('twitter');
             $data->token = 0;
 
             if($data->save()){
@@ -206,7 +176,7 @@ class UserController extends Controller
         {
             if(!Hash::check($password, $user->password))
             {
-                $response['message'] = "Maaf username " .$username. " Tidak di temukan";
+                $response['message'] = "Maaf username atau password anda salah";
                 return response()->json($response, 404);
             }else{
                 $token = utf8_decode(Str::random(40));

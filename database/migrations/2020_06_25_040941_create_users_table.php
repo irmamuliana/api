@@ -19,12 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('password');
-            $table->text('description');
-            $table->string('phone');
-            $table->string('linkedin');
-            $table->string('instagram');
-            $table->string('twitter');
-            $table->string('token');
+            $table->text('description')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }
